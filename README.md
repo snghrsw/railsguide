@@ -13,7 +13,6 @@ rbenv移行後、ruby, gem, railsがMacプリインストール版を参照し�
 - Make Controller: `rails generate controller {contorollerName} {actionName}`
 
 
-
 # README
 
 This README would normally document whatever steps are necessary to get the
