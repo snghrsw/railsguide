@@ -1,5 +1,9 @@
 class CommentsController < ApplicationController
 
+  private def comment_params
+    params.require(:comment).permit(:commenter, :body)
+  end
+
   def index
     @article = Article.find(params[:article_id])
     render json: @article.comments
@@ -8,7 +12,7 @@ class CommentsController < ApplicationController
   def create
     @article = Article.find(params[:article_id])
     @comment = @article.comments.create(comment_params)
-    render json: @article
+    render json: @comment
   end
 
   def destroy
@@ -18,7 +22,4 @@ class CommentsController < ApplicationController
     render json: @article
   end
 
-  private def comment_params
-    params.require(:comment).permit(:commenter, :body)
-  end
 end

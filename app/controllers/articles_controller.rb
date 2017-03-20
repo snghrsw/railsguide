@@ -1,17 +1,12 @@
 class ArticlesController < ApplicationController
 
-  def new
-    @article = Article.new
-    render json: @article
+  private def article_params
+    params.require(:article).permit(:title, :text)
   end
 
   def index
     @articles = Article.all
     render json: @articles
-  end
-
-  private def article_params
-    params.require(:article).permit(:title, :text)
   end
 
   def create
@@ -27,11 +22,6 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find(params[:id])
-    render json: @article
-  end
-
-  def edit
     @article = Article.find(params[:id])
     render json: @article
   end
